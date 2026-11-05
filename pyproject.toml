@@ -1,0 +1,11 @@
+[project]
+name = "ecom-fastapi-v2"
+version = "0.1.0"
+description = "Add your description here"
+readme = "README.md"
+requires-python = ">=3.12"
+dependencies = [
+    "faker>=40.44.0",
+    "fastapi[standard]>=0.162.0",
+    "python-dotenv>=1.2.4",
+]
