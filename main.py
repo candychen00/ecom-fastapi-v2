@@ -3,6 +3,7 @@ from faker import Faker
 
 from datetime import date
 
+
 # Create FastAPI application
 app = FastAPI()
 
@@ -27,3 +28,5 @@ def get_fake_customers(
             }
         )
     return cust_to_return
+
+
