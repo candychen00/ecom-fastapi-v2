@@ -3,6 +3,7 @@ from faker import Faker
 import random
 
 from datetime import date, datetime
+from zoneinfo import ZoneInfo
 from uuid import uuid4
 
 from products import product_list, country_list
@@ -48,7 +49,7 @@ def get_fake_orders(
         ord_to_return.append({
             "event_id": uuid4(),
             "event_type": "order_created",
-            "event_time": datetime.now(),
+            "event_time": datetime.now(ZoneInfo("Asia/Taipei")),
             "order": {
                 "order_id": uuid4(),
                 "status": "paid",
