@@ -1,5 +1,5 @@
 
-country_list = ["tw", "us"]
+country_list = ["Canada", "US"]
 
 product_list = [
   {"product_id": "P-1001", "product_name": "Keyboard", "category": "Electronics", "unit_price": "49.90"},
