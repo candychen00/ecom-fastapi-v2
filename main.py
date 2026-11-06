@@ -38,7 +38,7 @@ def get_fake_customers(
 
 @app.get("/fake_orders")
 def get_fake_orders(
-            num: int = Query(default=1, ge=1, le=50)
+        num: int = Query(default=1, ge=1, le=50)
     ):
     ord_to_return = []
 
@@ -71,6 +71,7 @@ def get_fake_orders(
                 ]
             }
         })
+    return ord_to_return
     
 
 
