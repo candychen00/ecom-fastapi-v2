@@ -1,7 +1,12 @@
 from fastapi import FastAPI, Query
 from faker import Faker
+import random
 
-from datetime import date
+from datetime import date, datetime
+from uuid import uuid4
+
+from products import product_list, country_list
+
 
 
 # Create FastAPI application
@@ -28,5 +33,44 @@ def get_fake_customers(
             }
         )
     return cust_to_return
+
+
+
+@app.get("/fake_orders")
+def get_fake_orders(
+            num: int = Query(default=1, ge=1, le=50)
+    ):
+    ord_to_return = []
+
+    rand_prod = random.choice(product_list)
+
+    for i in range(num):
+        ord_to_return.append({
+            "event_id": uuid4(),
+            "event_type": "order_created",
+            "event_time": datetime.now(),
+            "order": {
+                "order_id": uuid4(),
+                "status": "paid",
+                "currency": "usd",
+                "customer": {
+                    "customer_id" : uuid4(),
+                    "name": fake.name(),
+                    "email": fake.email(),
+                    "country": random.choice(country_list),
+                } ,
+                "items": [
+                    {
+                        "product_id": rand_prod["product_id"],
+                        "product_name": rand_prod["product_name"],
+                        "category": rand_prod["category"],
+                        "unit_price": rand_prod["unit_price"],
+                        "quantity": random.randint(1,10),
+                    }
+                    for i in range( random.randint(1,3) )
+                ]
+            }
+        })
+    
 
 
