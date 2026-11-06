@@ -54,7 +54,7 @@ def get_fake_orders(
             "quantity": random.randint(1,10),
         })
 
-    for i in range(num):
+    for j in range(num):
         ord_to_return.append({
             "event_id": uuid4(),
             "event_type": "order_created",
