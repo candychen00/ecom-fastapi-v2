@@ -73,6 +73,9 @@ def get_fake_orders(
             }
         })
     return ord_to_return
-    
 
+
+@app.get("/fake_orders/product_list")
+def get_fake_orders_product_list():
+    return product_list
 
