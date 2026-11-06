@@ -43,7 +43,16 @@ def get_fake_orders(
     ):
     ord_to_return = []
 
-    rand_prod = random.choice(product_list)
+    order_items = []
+    for i in range( random.randint(1,3) ):
+        rand_prod = random.choice(product_list)
+        order_items.append({
+            "product_id": rand_prod["product_id"],
+            "product_name": rand_prod["product_name"],
+            "category": rand_prod["category"],
+            "unit_price": rand_prod["unit_price"],
+            "quantity": random.randint(1,10),
+        })
 
     for i in range(num):
         ord_to_return.append({
@@ -60,16 +69,7 @@ def get_fake_orders(
                     "email": fake.email(),
                     "country": random.choice(country_list),
                 } ,
-                "items": [
-                    {
-                        "product_id": rand_prod["product_id"],
-                        "product_name": rand_prod["product_name"],
-                        "category": rand_prod["category"],
-                        "unit_price": rand_prod["unit_price"],
-                        "quantity": random.randint(1,10),
-                    }
-                    for i in range( random.randint(1,3) )
-                ]
+                "items": order_items
             }
         })
     return ord_to_return
