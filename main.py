@@ -99,3 +99,5 @@ def get_fake_users(num: int = Query(default=1, ge=1, le=20)):
             "membership": random.choice(["free"] * 9 + ["premium"] * 1),
         })
 
+    return user_to_return
+
