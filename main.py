@@ -17,7 +17,6 @@ Faker.seed(1234)
 fake = Faker('en_US')
 
 
-
 @app.get("/fake_customers")
 def get_fake_customers(
             num: int = Query(default=1, ge=1, le=50)
@@ -75,7 +74,28 @@ def get_fake_orders(
     return ord_to_return
 
 
+
 @app.get("/fake_orders/product_list")
 def get_fake_orders_product_list():
     return product_list
+
+
+"""
+KAFKA PROJECT
+"""
+
+@app.get("/fake_users")
+def get_fake_users(num: int = Query(default=1, ge=1, le=20)):
+    user_to_return = []
+
+    for i in range(num):
+        user_to_return.append({
+            "user_id": uuid4(),
+            "name": fake.name(),
+            "email": fake.email(),
+            "gender": random.choice(["F","M"]),
+            "birth_date": fake.date_between_dates(date_start="1968-01-01", date_end="2010-01-01"),
+            "created_at": fake.date_time_between_dates(datetime_start="2026-01-01", datetime_end="now"),
+            "membership": random.choice(["free"] * 9 + ["premium"] * 1),
+        })
 
