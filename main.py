@@ -94,8 +94,8 @@ def get_fake_users(num: int = Query(default=1, ge=1, le=20)):
             "name": fake.name(),
             "email": fake.email(),
             "gender": random.choice(["F","M"]),
-            "birth_date": fake.date_between_dates(date_start="1968-01-01", date_end="2010-01-01"),
-            "created_at": fake.date_time_between_dates(datetime_start="2026-01-01", datetime_end="now"),
+            "birth_date": fake.date_between_dates(date_start=date(1968,1,1), date_end= date(2010,1,1)),
+            "created_at": fake.date_time_between_dates(datetime_start=datetime(2026,1,1), datetime_end="now"),
             "membership": random.choice(["free"] * 9 + ["premium"] * 1),
         })
 
